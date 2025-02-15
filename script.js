@@ -1,24 +1,25 @@
-function Car(make, model) {
-    this.make = make;
-    this.model = model;
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet() {
+        console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+    }
 }
 
-Car.prototype.getMakeModel = function () {
-    return this.make + " " + this.model;
-};
+class Employee extends Person {
+    constructor(name, age, jobTitle) {
+        super(name, age);
+        this.jobTitle = jobTitle;
+    }
 
-function SportsCar(make, model, topSpeed) {
-    Car.call(this, make, model);
-    this.topSpeed = topSpeed;
+    jobGreet() {
+        console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
+    }
 }
-
-SportsCar.prototype = Object.create(Car.prototype);
-SportsCar.prototype.constructor = SportsCar;
-
-SportsCar.prototype.getTopSpeed = function () {
-    return this.topSpeed;
-};
 
 // Do not change the code below
-window.Car = Car;
-window.SportsCar = SportsCar;
+window.Person = Person;
+window.Employee = Employee;
